@@ -1,0 +1,19 @@
+{
+  "name": "react-phone-dropdown",
+  "version": "1.0.0",
+  "description": "react phone national code dropdown component lib",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "country-phone-code",
+    "nationality",
+    "dropdown",
+    "select",
+    "country-code"
+  ],
+  "author": "alexrider94",
+  "license": "ISC"
+}
