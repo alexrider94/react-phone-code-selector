@@ -1,5 +1,8 @@
 # react-phone-selector
 
+![NPM License](https://img.shields.io/npm/l/react-phone-selector)
+![npm package](https://img.shields.io/npm/v/react-phone-selector)
+
 ## About
 
 this library provides React components to display phone country selector.
@@ -34,6 +37,7 @@ const CustomPhoneSelector = () => {
 
   return (
     <PhoneSelector
+      width={300}
       defaultValue={phone}
       onChange={(value) => {
         setPhone(value);
