@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react';
-import { PhoneOption } from './type/dropdown';
-import dataSet from './utils/country';
+import { PhoneOption } from './type';
+import dataSet from './data';
 import Flag from 'react-country-flag';
 import styled from 'styled-components';
 
@@ -12,9 +12,12 @@ type Props = {
   onChange: (value: string) => void;
 };
 
-export default ({ width, defaultValue, disabled, search, onChange }: Props) => {
+export const PhoneSelector = ({ width, defaultValue, disabled, search, onChange }: Props) => {
   const ref = React.useRef<HTMLDivElement>(null);
-  const [selectedValue, setSelectedValue] = React.useState<PhoneOption>({ label: 'Select', value: '' });
+  const [selectedValue, setSelectedValue] = React.useState<PhoneOption>({
+    label: 'Select',
+    value: '',
+  });
   const [show, setShow] = React.useState<boolean>(false);
   const [searchValue, setSearchValue] = React.useState<string | null>(null);
   const options: PhoneOption[] = React.useMemo(() => {
@@ -116,7 +119,6 @@ export default ({ width, defaultValue, disabled, search, onChange }: Props) => {
 };
 
 const SelectedText = styled.div<{ isEmpty?: boolean; fontColor?: string }>`
-  font-family: ${({ theme }) => theme.wfont.NotoSansKRLight};
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -140,20 +142,14 @@ const Selected = styled.div<{
   border-radius: 30px;
   border: none;
   text-align: start;
-  background-color: ${({ theme, backgroundColor, disabled }) =>
-    backgroundColor ? (disabled ? theme.colors.s5 : backgroundColor) : '#f9f9f9'};
+  background-color: ${({ backgroundColor }) => (backgroundColor ? backgroundColor : '#f9f9f9')};
 
   color: ${({ isDefault }) => (isDefault ? '#BEC1CA' : '#0a112c')};
 
   pointer-events: ${({ disabled }) => (disabled ? 'none' : '')};
 `;
-const DropButton = styled.img`
-  position: absolute;
-  right: 5%;
-`;
 const List = styled.div<{ hoverColor?: string; hasSearch?: boolean }>`
   padding: 15px 15px;
-  font-family: ${({ theme }) => theme.wfont.NotoSansKRLight};
   font-size: 16px;
   color: ${({ hoverColor }) => (hoverColor ? '#f9f9f9' : '#0a112c')};
 
@@ -209,7 +205,7 @@ const SelectWrapper = styled.div<{
   display: flex;
   flex-direction: column;
   width: ${({ width }) => (width ? `${width}px` : '100%')};
-  background-color: ${({ theme, backgroundColor }) => (backgroundColor ? backgroundColor : theme.colors.s1)};
+  background-color: ${({ backgroundColor }) => (backgroundColor ? backgroundColor : '#fffff')};
   border: ${({ borderColor }) => (borderColor ? `1px solid ${borderColor}` : `1px solid #e6e8ed`)};
   box-sizing: border-box;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);

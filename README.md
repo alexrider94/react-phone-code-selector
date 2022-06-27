@@ -24,12 +24,21 @@ yarn add react-hpone-selector
 It's very easy to use
 
 ```javascript
-import React from 'react';
-import PhoneSelector from 'react-phone-selector';
+import React, { useState } from 'react';
+import { PhoneSelector } from 'react-phone-selector';
 
 type Props = {};
 
 const CustomPhoneSelector = () => {
-  return <PhoneSelector />;
+  const [phone, setPhone] = useState < string > '';
+
+  return (
+    <PhoneSelector
+      defaultValue={phone}
+      onChange={(value) => {
+        setPhone(value);
+      }}
+    />
+  );
 };
 ```

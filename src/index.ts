@@ -1,1 +1,1 @@
-export default './dropdown';
+export * from './selector';
