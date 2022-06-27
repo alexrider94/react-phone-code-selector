@@ -1,2 +1,2 @@
 export * from './selector';
-export * from './data';
+export * as data from './data';

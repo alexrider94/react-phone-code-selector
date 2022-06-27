@@ -1,6 +1,6 @@
 {
   "name": "react-phone-code-selector",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "react phone code selector component library with styled-component",
   "main": "dist/index.js",
   "scripts": {
