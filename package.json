@@ -1,7 +1,7 @@
 {
-  "name": "react-phone-selector",
-  "version": "1.0.8",
-  "description": "react phone national code selector component lib based styled-component",
+  "name": "react-phone-code-selector",
+  "version": "1.0.0",
+  "description": "react phone code selector component library with styled-component",
   "main": "dist/index.js",
   "scripts": {
     "start": "tsdx watch",
@@ -14,7 +14,7 @@
   },
   "keywords": [
     "react",
-    "country-phone-code",
+    "country-code",
     "nationality",
     "dropdown",
     "select",
@@ -35,5 +35,5 @@
     "react-dom": "^18.2.0",
     "tsdx": "^0.14.1"
   },
-  "repository": "github:alexrider94/react-phone-selector"
+  "repository": "github:alexrider94/react-phone-code-selector"
 }
