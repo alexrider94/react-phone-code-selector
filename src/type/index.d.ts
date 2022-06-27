@@ -4,6 +4,7 @@ declare type PhoneOption = {
 };
 
 declare interface PhoneSelector {
+  placeholder?: string;
   defaultValue: string;
   disabled?: boolean;
   width?: number;

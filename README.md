@@ -44,3 +44,42 @@ const CustomPhoneCodeSelector = () => {
   );
 };
 ```
+
+with `styled-components`
+
+```typescript
+import React, { useState } from 'react';
+import { PhoneCodeSelector } from 'react-phone-code-selector';
+
+type Props = {};
+
+const CustomPhoneCodeSelector = () => {
+  const [phone, setPhone] = useState<string>('');
+
+  return (
+    <CustomSelector
+      width={300}
+      defaultValue={phone}
+      onChange={(value) => {
+        setPhone(value);
+      }}
+    />
+  );
+};
+
+const CustomSelector = styled(PhoneCodeSelector)`
+  width: 300px;
+  border-radius: 15px;
+  background-color: violet;
+
+  .selector-option {
+    background-color: red;
+  }
+
+  .selector-option-item {
+    &:hover {
+      background-color: aqua;
+    }
+  }
+`;
+```

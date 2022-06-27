@@ -3,9 +3,15 @@ import dataSet from './data';
 import Flag from 'react-country-flag';
 import styled from 'styled-components';
 
-export const PhoneSelector = ({}) => {};
-
-export const PhoneCodeSelector = ({ className, width, defaultValue, disabled, search, onChange }: PhoneSelector) => {
+export const PhoneCodeSelector = ({
+  className,
+  width,
+  defaultValue,
+  disabled,
+  search,
+  placeholder,
+  onChange,
+}: PhoneSelector) => {
   const ref = React.useRef<HTMLDivElement>(null);
   const [selectedValue, setSelectedValue] = React.useState<PhoneOption>({
     label: 'Select',
@@ -55,7 +61,13 @@ export const PhoneCodeSelector = ({ className, width, defaultValue, disabled, se
 
   return (
     <Container ref={ref} className={className}>
-      <Selected disabled={disabled} isDefault={selectedValue.value === ''} width={width} onClick={() => setShow(true)}>
+      <Selected
+        className={className}
+        disabled={disabled}
+        isDefault={selectedValue.value === ''}
+        width={width}
+        onClick={() => setShow(true)}
+      >
         {selectedValue.value === '' ? (
           <SelectedText isEmpty={selectedValue.value === ''}>{selectedValue.label}</SelectedText>
         ) : (
@@ -67,8 +79,8 @@ export const PhoneCodeSelector = ({ className, width, defaultValue, disabled, se
         )}
       </Selected>
       {show && (
-        <SelectWrapper width={width}>
-          {search !== false && (
+        <SelectWrapper className={className} width={width}>
+          {search !== false && typeof search !== 'undefined' ? (
             <SearchWrapper>
               <Input
                 onFocus={() => {
@@ -77,18 +89,19 @@ export const PhoneCodeSelector = ({ className, width, defaultValue, disabled, se
                 type="text"
                 value={searchValue ?? ''}
                 onChange={onChangeSearchValue}
-                placeholder={`Search for Phone Country`}
+                placeholder={placeholder || `Search for Phone Country`}
               />
             </SearchWrapper>
-          )}
+          ) : null}
 
-          <Options>
+          <Options className="selector-option" hasSearch={search}>
             {options
               .filter((v) => (searchValue ? v.label.toLowerCase().includes(searchValue.toLowerCase()) : true))
               .map((option, key) => {
                 return (
                   <List
-                    hasSearch={search}
+                    className="selector-option-item"
+                    hasSearch={search || false}
                     key={key}
                     onClick={() => {
                       setSelectedValue(option);
@@ -141,7 +154,8 @@ const Selected = styled.div<{
 
   pointer-events: ${({ disabled }) => (disabled ? 'none' : '')};
 `;
-const List = styled.div<{ hoverColor?: string; hasSearch?: boolean }>`
+const List = styled.li<{ hoverColor?: string; hasSearch?: boolean }>`
+  list-style: none;
   padding: 15px 15px;
   font-size: 16px;
   color: ${({ hoverColor }) => (hoverColor ? '#f9f9f9' : '#0a112c')};
@@ -161,16 +175,22 @@ const List = styled.div<{ hoverColor?: string; hasSearch?: boolean }>`
     border-bottom-right-radius: 15px;
   }
 `;
-const Options = styled.div`
+const Options = styled.div<{ hasSearch?: boolean }>`
   max-height: 300px;
   overflow-y: auto;
+
+  border-top-left-radius: ${({ hasSearch }) => (hasSearch ? 0 : 15)}px;
+  border-top-right-radius: ${({ hasSearch }) => (hasSearch ? 0 : 15)}px;
+
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 `;
 const Input = styled.input<{ backgroundColor?: string }>`
   text-indent: 20%;
   background-color: ${({ backgroundColor }) => (backgroundColor ? backgroundColor : '#f9f9f9')};
   width: 80%;
   height: 40px;
-  border-radius: 21px;
+  border-radius: 20px;
   margin: 20px 0;
   border: none;
   outline: none;
@@ -201,6 +221,6 @@ const SelectWrapper = styled.div<{
   border: ${({ borderColor }) => (borderColor ? `1px solid ${borderColor}` : `1px solid #e6e8ed`)};
   box-sizing: border-box;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
+  border-radius: 15px;
 `;
 const Container = styled.div``;
