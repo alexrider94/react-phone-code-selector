@@ -1,18 +1,11 @@
 import React, { ChangeEvent } from 'react';
-import { PhoneOption } from './type';
 import dataSet from './data';
 import Flag from 'react-country-flag';
 import styled from 'styled-components';
 
-type Props = {
-  defaultValue: string;
-  disabled?: boolean;
-  width?: number;
-  search?: boolean;
-  onChange: (value: string) => void;
-};
+export const PhoneSelector = ({}) => {};
 
-export const PhoneSelector = ({ width, defaultValue, disabled, search, onChange }: Props) => {
+export const PhoneCodeSelector = ({ className, width, defaultValue, disabled, search, onChange }: PhoneSelector) => {
   const ref = React.useRef<HTMLDivElement>(null);
   const [selectedValue, setSelectedValue] = React.useState<PhoneOption>({
     label: 'Select',
@@ -61,7 +54,7 @@ export const PhoneSelector = ({ width, defaultValue, disabled, search, onChange 
   }, []);
 
   return (
-    <Container ref={ref}>
+    <Container ref={ref} className={className}>
       <Selected disabled={disabled} isDefault={selectedValue.value === ''} width={width} onClick={() => setShow(true)}>
         {selectedValue.value === '' ? (
           <SelectedText isEmpty={selectedValue.value === ''}>{selectedValue.label}</SelectedText>

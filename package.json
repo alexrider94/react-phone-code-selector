@@ -1,7 +1,7 @@
 {
   "name": "react-phone-selector",
   "version": "1.0.8",
-  "description": "react phone national code seletor component lib based styled-component",
+  "description": "react phone national code selector component lib based styled-component",
   "main": "dist/index.js",
   "scripts": {
     "start": "tsdx watch",
