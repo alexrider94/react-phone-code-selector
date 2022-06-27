@@ -193,7 +193,6 @@ const SelectWrapper = styled.div<{
   z-index: 999;
   position: absolute;
   width: 30%;
-  max-width: 400px;
   min-width: ${({ width }) => (width ? width : 275)}px;
   display: flex;
   flex-direction: column;
