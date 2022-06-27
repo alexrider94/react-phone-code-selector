@@ -6,7 +6,7 @@ this library provides React components to display phone country selector.
 
 You can pick the country with coutry number included and put your phone number with it.
 
-It is also included with exporting phone coutry data.
+Note that the dataset can also be imported individually.
 
 ## Installation
 
@@ -25,7 +25,7 @@ It's very easy to use
 
 ```javascript
 import React from 'react';
-import PhoneSelector from 'react-phone-selecotr';
+import PhoneSelector from 'react-phone-selector';
 
 type Props = {};
 

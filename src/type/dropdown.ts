@@ -1,6 +1,6 @@
 interface DropdownProps {}
 
-type optionType = {
+export type PhoneOption = {
   label: string;
-  value: string | number;
+  value: string;
 };
