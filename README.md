@@ -26,14 +26,14 @@ yarn add react-hpone-selector
 
 It's very easy to use
 
-```javascript
+```typescript
 import React, { useState } from 'react';
 import { PhoneSelector } from 'react-phone-selector';
 
 type Props = {};
 
 const CustomPhoneSelector = () => {
-  const [phone, setPhone] = useState < string > '';
+  const [phone, setPhone] = useState<string>('');
 
   return (
     <PhoneSelector
